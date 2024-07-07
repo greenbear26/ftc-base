@@ -26,4 +26,12 @@ android {
 }
 
 dependencies {
+    testImplementation libs.junit.jupiter
+    testImplementation libs.junit.jupiter.params
+    testImplementation libs.mockito.core
+    implementation libs.ftclib
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
 }
