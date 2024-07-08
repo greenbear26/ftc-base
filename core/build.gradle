@@ -30,7 +30,7 @@ dependencies {
     testImplementation libs.junit.jupiter
     testImplementation libs.junit.jupiter.params
     testImplementation libs.mockito.core
-    implementation libs.ftclib
+    implementation libs.ftcrobotcore
 }
 
 tasks.withType(Test).configureEach {
