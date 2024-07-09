@@ -86,17 +86,19 @@ public class StateMachine {
      * Updates the state machine
      */
     public void update() {
-        for (Transition transition : conditions.get(currentState)) {
-            if (transition.isFinished()) {
-                CommandScheduler.getInstance().cancel(states.get(currentState));
+        if (conditions.get(currentState) != null) {
+            for (Transition transition : conditions.get(currentState)) {
+                if (transition.isFinished()) {
+                    CommandScheduler.getInstance().cancel(states.get(currentState));
 
-                currentState = transition.getNextState();
-                if (!states.containsKey(currentState)) {
-                    throw new IllegalArgumentException("State: " + currentState + " does not exist");
+                    currentState = transition.getNextState();
+                    if (!states.containsKey(currentState)) {
+                        throw new IllegalArgumentException("State: " + currentState + " does not exist");
+                    }
+
+                    CommandScheduler.getInstance().schedule(states.get(currentState));
+                    break;
                 }
-
-                CommandScheduler.getInstance().schedule(states.get(currentState));
-                break;
             }
         }
     }
