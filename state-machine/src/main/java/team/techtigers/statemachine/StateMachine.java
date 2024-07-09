@@ -1,5 +1,7 @@
 package team.techtigers.statemachine;
 
+import com.arcrobotics.ftclib.command.CommandScheduler;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -68,30 +70,32 @@ public class StateMachine {
         if (!states.containsKey(stateName)) {
             throw new IllegalArgumentException("State: " + stateName + " does not exist");
         }
-        states.get(stateName).start();
 
         return this;
+    }
+
+    public void start() {
+        if (currentState == null) {
+            throw new IllegalStateException("No first state set");
+        }
+
+        CommandScheduler.getInstance().schedule(states.get(currentState));
     }
 
     /**
      * Updates the state machine
      */
     public void update() {
-        if (currentState == null) {
-            throw new IllegalStateException("No first state set");
-        }
-
-        states.get(currentState).update();
-
         for (Transition transition : conditions.get(currentState)) {
             if (transition.isFinished()) {
-                currentState = transition.getNextState();
+                CommandScheduler.getInstance().cancel(states.get(currentState));
 
+                currentState = transition.getNextState();
                 if (!states.containsKey(currentState)) {
                     throw new IllegalArgumentException("State: " + currentState + " does not exist");
                 }
 
-                states.get(currentState).start();
+                CommandScheduler.getInstance().schedule(states.get(currentState));
                 break;
             }
         }
