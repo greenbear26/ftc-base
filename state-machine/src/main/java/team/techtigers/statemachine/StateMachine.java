@@ -88,7 +88,7 @@ public class StateMachine {
     public void update() {
         if (conditions.get(currentState) != null) {
             for (Transition transition : conditions.get(currentState)) {
-                if (transition.isFinished()) {
+                if (transition.isFinished(states.get(currentState).getCurrentCondition())) {
                     CommandScheduler.getInstance().cancel(states.get(currentState));
 
                     currentState = transition.getNextState();

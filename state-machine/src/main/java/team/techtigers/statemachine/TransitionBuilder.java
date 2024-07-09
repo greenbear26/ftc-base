@@ -1,8 +1,10 @@
 package team.techtigers.statemachine;
 
-import java.util.function.BooleanSupplier;
-
-public class TransitionBuilder {
+/**
+ * Builder class for creating transitions in a state machine
+ * @param <T> The type of the condition, usually an enum
+ **/
+public class TransitionBuilder<T> {
     private final StateMachine stateMachine;
     private final String currentState;
     private String nextState;
@@ -24,12 +26,13 @@ public class TransitionBuilder {
      * @param condition the condition that must be met for the state to transition
      * @return the state machine to allow for method chaining
      */
-    public StateMachine when(BooleanSupplier condition) {
+    public StateMachine when(T condition) {
         if (nextState == null) {
             throw new IllegalStateException("Condition must be set (use to)");
         }
 
-        stateMachine.addCondition(currentState, new Transition(condition, nextState));
+        stateMachine.addCondition(currentState, new Transition<T>(condition,
+                nextState));
 
         return stateMachine;
     }

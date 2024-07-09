@@ -56,7 +56,7 @@ class StateMachineTest {
     @Test
     @DisplayName("Updating state machine transitions to next state on condition")
     void updateTransitionsToNextStateOnCondition() {
-        when(mockTransition.isFinished()).thenReturn(true);
+        when(mockTransition.isFinished(true)).thenReturn(true);
         when(mockTransition.getNextState()).thenReturn("nextState");
 
         State nextState = mock(State.class);
@@ -69,7 +69,7 @@ class StateMachineTest {
 
         stateMachine.update();
 
-        verify(mockTransition, times(1)).isFinished();
+        verify(mockTransition, times(1)).isFinished(true);
         verify(mockState, times(1)).initialize();
         verify(nextState, times(1)).initialize();
     }
