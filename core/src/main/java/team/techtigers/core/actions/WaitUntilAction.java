@@ -1,4 +1,4 @@
-package team.techtigers.core;
+package team.techtigers.core.actions;
 
 import java.util.function.BooleanSupplier;
 

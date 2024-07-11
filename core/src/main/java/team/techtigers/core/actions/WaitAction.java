@@ -1,4 +1,4 @@
-package team.techtigers.core;
+package team.techtigers.core.actions;
 
 /**
  * Action to wait for a certain amount of time
