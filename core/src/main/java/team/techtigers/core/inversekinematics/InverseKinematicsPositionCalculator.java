@@ -36,7 +36,7 @@ public class InverseKinematicsPositionCalculator {
      * @return An angle for the system to orient to (in radians)
      */
     public static double calculateRotation(double x, double y, double currentHeading) {
-        double totalAngle = Math.atan2(y, x) + currentHeading;
+        double totalAngle = -Math.atan2(y, x) + currentHeading;
         if (totalAngle > Math.PI) {
             totalAngle -= 2*Math.PI;
         }
