@@ -25,12 +25,11 @@ public class StateMachine {
     /**
      * Adds a state to the state machine
      *
-     * @param stateName the name of the state
      * @param state the state for the state
      * @return the state machine to allow for method chaining
      */
-    public StateMachine addState(String stateName, State state) {
-        states.put(stateName, state);
+    public StateMachine addState(State state) {
+        states.put(state.getName(), state);
 
         return this;
     }
@@ -46,13 +45,14 @@ public class StateMachine {
     }
 
     /**
-     * Adds a condition to the state machine.This should really only  be used in the
+     * Adds a condition to the state machine. This should really only  be
+     * used in the
      * TransitionBuilder, other users should use the from method.
      *
      * @param currentState the name of the condition
      * @return the state machine to allow for method chaining
      */
-    public void addCondition(String currentState, Transition transition) {
+    void addCondition(String currentState, Transition transition) {
         if (!conditions.containsKey(currentState)) {
             conditions.put(currentState, new ArrayList<>());
         }

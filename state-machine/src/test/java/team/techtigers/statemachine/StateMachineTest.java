@@ -16,14 +16,15 @@ class StateMachineTest {
     void setUp() {
         stateMachine = new StateMachine();
         mockState = mock(State.class);
+        when(mockState.getName()).thenReturn("mockState");
         mockTransition = mock(Transition.class);
     }
 
     @Test
     @DisplayName("Adding a state stores it correctly")
     void addStateStoresStateCorrectly() {
-        stateMachine.addState("testState", mockState);
-        assertTrue(stateMachine.addState("testState", mockState) instanceof StateMachine);
+        stateMachine.addState(mockState);
+        assertTrue(stateMachine.addState(mockState) instanceof StateMachine);
     }
 
     @Test
@@ -35,8 +36,8 @@ class StateMachineTest {
     @Test
     @DisplayName("Setting the first state to an existing state does not throw exception")
     void setFirstStateToExistingState() {
-        stateMachine.addState("existingState", mockState);
-        assertDoesNotThrow(() -> stateMachine.setFirstState("existingState"));
+        stateMachine.addState(mockState);
+        assertDoesNotThrow(() -> stateMachine.setFirstState(mockState.getName()));
     }
 
     @Test
@@ -48,22 +49,24 @@ class StateMachineTest {
     @Test
     @DisplayName("Starting with a first state set does not throw exception")
     void startWithFirstStateSet() {
-        stateMachine.addState("startState", mockState);
-        stateMachine.setFirstState("startState");
+        stateMachine.addState(mockState);
+        stateMachine.setFirstState(mockState.getName());
         assertDoesNotThrow(() -> stateMachine.start());
     }
 
     @Test
     @DisplayName("Updating state machine transitions to next state on condition")
     void updateTransitionsToNextStateOnCondition() {
+        State nextState = mock(State.class);
+        when(nextState.getName()).thenReturn("nextState");
+
         when(mockTransition.isFinished(null)).thenReturn(true);
         when(mockTransition.getNextState()).thenReturn("nextState");
 
-        State nextState = mock(State.class);
-        stateMachine.addState("currentState", mockState)
-                .addState("nextState", nextState)
-                .addCondition("currentState", mockTransition);
-        stateMachine.setFirstState("currentState");
+        stateMachine.addState(mockState)
+                .addState(nextState)
+                .addCondition(mockState.getName(), mockTransition);
+        stateMachine.setFirstState(mockState.getName());
 
         stateMachine.start();
 
@@ -77,8 +80,8 @@ class StateMachineTest {
     @Test
     @DisplayName("Updating state machine without conditions does nothing")
     void updateWithoutConditionsDoesNothing() {
-        stateMachine.addState("singleState", mockState)
-                .setFirstState("singleState");
+        stateMachine.addState(mockState)
+                .setFirstState(mockState.getName());
         stateMachine.start();
 
         assertDoesNotThrow(() -> stateMachine.update());
