@@ -1,4 +1,4 @@
-package team.techtigers.statemachine.actions;
+package team.techtigers.actions;
 
 /**
  * Interface for an action.

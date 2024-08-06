@@ -1,4 +1,4 @@
-package team.techtigers.statemachine.actions;
+package team.techtigers.actions;
 
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;

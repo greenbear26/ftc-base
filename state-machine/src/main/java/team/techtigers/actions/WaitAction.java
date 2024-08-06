@@ -1,4 +1,4 @@
-package team.techtigers.statemachine.actions;
+package team.techtigers.actions;
 
 /**
  * Action to wait for a certain amount of time

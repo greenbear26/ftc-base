@@ -1,4 +1,4 @@
-package team.techtigers.statemachine.actions;
+package team.techtigers.actions;
 
 import java.util.function.BooleanSupplier;
 
@@ -19,7 +19,6 @@ public class WaitUntilAction implements IAction {
 
     @Override
     public void start() {
-
     }
 
     @Override
