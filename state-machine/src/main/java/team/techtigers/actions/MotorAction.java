@@ -1,4 +1,4 @@
-package team.techtigers.core.actions;
+package team.techtigers.statemachine.actions;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
