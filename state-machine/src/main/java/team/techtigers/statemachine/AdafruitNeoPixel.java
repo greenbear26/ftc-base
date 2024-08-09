@@ -29,9 +29,9 @@ public class AdafruitNeoPixel extends I2cDeviceSynchDevice<I2cDeviceSynch> {
     private static final int MAX_SEQUENCE_LENGTH = 30;
 
     private int bytesPerLed;
-    private Color[] currentLedBuffer;
-    private Color[] lastLedBuffer;
-    private Color[] emptyLedBuffer;
+    protected Color[] currentLedBuffer;
+    protected Color[] lastLedBuffer;
+    protected Color[] emptyLedBuffer;
 
     public AdafruitNeoPixel(I2cDeviceSynch i2cDeviceSynch, boolean deviceClientIsOwned) {
         super(i2cDeviceSynch, deviceClientIsOwned);
