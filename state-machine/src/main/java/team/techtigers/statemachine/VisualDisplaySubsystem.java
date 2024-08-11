@@ -1,23 +1,21 @@
 package team.techtigers.statemachine;
 
-import org.firstinspires.ftc.teamcode.display.region.DisplayRegion;
-
 import java.util.HashMap;
 
 /**
  * Output subsystem that controls the visual feedback display
  */
-public class VisualDisplay extends YetAnotherSubsystemBase {
+public class VisualDisplaySubsystem extends YetAnotherSubsystemBase {
     private final AdafruitNeoPixel visualDisplay;
-    private final HashMap<String, DisplayView> views;
-    private DisplayView activeView;
+    final HashMap<String, DisplayView> views;
+    DisplayView activeView;
 
     /**
      * Initializes a new visual feedback subsystem object. Obtains references to visual feedback
      *
      * @param defaultView the default view to display
      */
-    public VisualDisplay(AdafruitNeoPixel visualDisplay, DisplayView defaultView) {
+    public VisualDisplaySubsystem(AdafruitNeoPixel visualDisplay, DisplayView defaultView) {
         this.visualDisplay = visualDisplay;
         visualDisplay.initialize(384, 3);
         views = new HashMap<>();
@@ -44,7 +42,13 @@ public class VisualDisplay extends YetAnotherSubsystemBase {
         activeView = views.get(key);
     }
 
-    private int findLedArrayIndex(int ledX, int ledY) {
+    /**
+     * Finds the index of the LED in the array
+     * @param ledX the x coordinate of the LED
+     * @param ledY the y coordinate of the LED
+     * @return the index of the LED in the array
+     */
+    int findLedArrayIndex(int ledX, int ledY) {
         if (ledX < 8) {
             ledX = 7 - ledX;
         } else if (ledX > 39) {
