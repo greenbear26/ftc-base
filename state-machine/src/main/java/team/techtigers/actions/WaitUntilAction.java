@@ -14,6 +14,9 @@ public class WaitUntilAction implements IAction {
      * @param condition The condition to wait for. When it becomes true, the action will finish
      */
     public WaitUntilAction(BooleanSupplier condition) {
+        if (condition == null) {
+            throw new IllegalArgumentException("Condition cannot be null");
+        }
         this.condition = condition;
     }
 
