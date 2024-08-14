@@ -1,4 +1,4 @@
-package team.techtigers.statemachine;
+package team.techtigers.visualdisplay;
 
 public class DisplayRegion {
     //TODO: Implement this class from core

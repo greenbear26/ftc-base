@@ -1,6 +1,8 @@
-package team.techtigers.statemachine;
+package team.techtigers.visualdisplay;
 
 import java.util.HashMap;
+
+import team.techtigers.statemachine.YetAnotherSubsystemBase;
 
 /**
  * Output subsystem that controls the visual feedback display

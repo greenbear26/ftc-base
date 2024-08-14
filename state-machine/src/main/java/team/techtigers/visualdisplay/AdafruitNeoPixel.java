@@ -1,4 +1,4 @@
-package team.techtigers.statemachine;
+package team.techtigers.visualdisplay;
 
 import com.qualcomm.robotcore.hardware.I2cAddr;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
