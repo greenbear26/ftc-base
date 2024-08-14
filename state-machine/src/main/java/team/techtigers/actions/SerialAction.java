@@ -1,4 +1,4 @@
-package team.techtigers.core.actions;
+package team.techtigers.actions;
 
 /**
  * Allows multiple servo actions to be performed in series
