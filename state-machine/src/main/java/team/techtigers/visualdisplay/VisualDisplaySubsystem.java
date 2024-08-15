@@ -15,11 +15,11 @@ public class VisualDisplaySubsystem extends YetAnotherSubsystemBase {
     /**
      * Initializes a new visual feedback subsystem object. Obtains references to visual feedback
      *
+     * @param visualDisplay the visual display object (adafruit neopixel)
      * @param defaultView the default view to display
      */
     public VisualDisplaySubsystem(AdafruitNeoPixel visualDisplay, DisplayView defaultView) {
         this.visualDisplay = visualDisplay;
-        visualDisplay.initialize(384, 3);
         views = new HashMap<>();
         views.put("default", defaultView);
         activeView = defaultView;
@@ -50,7 +50,7 @@ public class VisualDisplaySubsystem extends YetAnotherSubsystemBase {
      * @param ledY the y coordinate of the LED
      * @return the index of the LED in the array
      */
-    int findLedArrayIndex(int ledX, int ledY) {
+    protected int findLedArrayIndex(int ledX, int ledY) {
         if (ledX < 8) {
             ledX = 7 - ledX;
         } else if (ledX > 39) {

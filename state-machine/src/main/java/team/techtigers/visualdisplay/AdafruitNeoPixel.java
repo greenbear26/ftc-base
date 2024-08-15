@@ -33,6 +33,11 @@ public class AdafruitNeoPixel extends I2cDeviceSynchDevice<I2cDeviceSynch> {
     protected Color[] lastLedBuffer;
     protected Color[] emptyLedBuffer;
 
+    /**
+     * Creates a new Adafruit NeoPixel driver.
+     * @param i2cDeviceSynch this item is traditioanally created through the hardwareMap
+     * @param deviceClientIsOwned this item is traditioanally created through the hardwareMap
+     */
     public AdafruitNeoPixel(I2cDeviceSynch i2cDeviceSynch, boolean deviceClientIsOwned) {
         super(i2cDeviceSynch, deviceClientIsOwned);
         this.deviceClient.setI2cAddress(ADDRESS_I2C_DEFAULT);
