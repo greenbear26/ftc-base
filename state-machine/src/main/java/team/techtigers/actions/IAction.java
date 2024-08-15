@@ -1,4 +1,4 @@
-package team.techtigers.core.actions;
+package team.techtigers.actions;
 
 /**
  * Interface for an action.
