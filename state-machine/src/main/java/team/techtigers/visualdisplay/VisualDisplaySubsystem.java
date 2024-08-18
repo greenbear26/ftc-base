@@ -2,12 +2,12 @@ package team.techtigers.visualdisplay;
 
 import java.util.HashMap;
 
-import team.techtigers.statemachine.YetAnotherSubsystemBase;
+import team.techtigers.statemachine.CloseableSubsytem;
 
 /**
  * Output subsystem that controls the visual feedback display
  */
-public class VisualDisplaySubsystem extends YetAnotherSubsystemBase {
+public class VisualDisplaySubsystem extends CloseableSubsytem {
     private final AdafruitNeoPixel visualDisplay;
     final HashMap<String, DisplayView> views;
     DisplayView activeView;
