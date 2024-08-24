@@ -6,6 +6,8 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynchDevice;
 import com.qualcomm.robotcore.hardware.configuration.annotations.DeviceProperties;
 import com.qualcomm.robotcore.hardware.configuration.annotations.I2cDeviceType;
 
+import team.techtigers.core.leddisplay.Color;
+
 /**
  * Driver for the Adafruit NeoPixel driver. This driver can be used to control individually
  * addressable LEDs over I2C.
