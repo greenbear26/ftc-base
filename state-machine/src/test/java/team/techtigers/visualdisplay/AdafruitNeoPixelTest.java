@@ -10,6 +10,8 @@ import static org.mockito.Mockito.verify;
 
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
 
+import team.techtigers.core.leddisplay.Color;
+
 class AdafruitNeoPixelTest {
 
     @Test
@@ -106,6 +108,6 @@ class AdafruitNeoPixelTest {
         neoPixel.setLeds(0, Color.RED);
         neoPixel.show();
 
-        verify(mockDevice, times(1)).write(any(byte[].class));
+        verify(mockDevice, times(5)).write(any(byte[].class));
     }
 }

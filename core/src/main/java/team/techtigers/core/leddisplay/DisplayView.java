@@ -1,4 +1,4 @@
-package team.techtigers.visualdisplay;
+package team.techtigers.core.leddisplay;
 
 /**
  * An abstract class for a view on the LEDs

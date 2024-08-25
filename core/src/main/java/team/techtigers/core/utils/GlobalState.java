@@ -1,4 +1,4 @@
-package team.techtigers.statemachine;
+package team.techtigers.core.utils;
 
 import java.io.Serializable;
 

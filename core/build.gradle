@@ -1,16 +1,19 @@
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.application)
 }
 
 android {
-    namespace 'team.techtigers.statemachine'
+    namespace 'team.techtigers.ftc_core'
     compileSdk 34
 
     defaultConfig {
+        applicationId "team.techtigers.ftc_core"
         minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -26,15 +29,10 @@ android {
 }
 
 dependencies {
-    implementation project(':core')
-    testImplementation libs.junit.jupiter
-    testImplementation libs.junit.jupiter.params
-    testImplementation libs.mockito.core
-    implementation libs.ftclib
-    implementation libs.ftcrobotcore
-    implementation libs.roadrunner
-}
 
-tasks.withType(Test).configureEach {
-    useJUnitPlatform()
+    implementation libs.appcompat
+    implementation libs.material
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
 }
