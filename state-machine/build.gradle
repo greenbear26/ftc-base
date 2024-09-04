@@ -32,7 +32,6 @@ dependencies {
     testImplementation libs.mockito.core
     implementation libs.ftclib
     implementation libs.ftcrobotcore
-    implementation libs.roadrunner
 }
 
 tasks.withType(Test).configureEach {
