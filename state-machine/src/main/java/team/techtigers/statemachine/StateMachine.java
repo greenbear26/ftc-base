@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * State machine that runs a series of states and transitions between them based on conditions
  */
-public class StateMachine {
+public class StateMachine extends CloseableSubsytem {
     private final HashMap<String, State> states;
     private final HashMap<String, ArrayList<Transition>> conditions;
     private String currentState;
@@ -46,8 +46,7 @@ public class StateMachine {
 
     /**
      * Adds a condition to the state machine. This should really only  be
-     * used in the
-     * TransitionBuilder, other users should use the from method.
+     * used in the TransitionBuilder, other users should use the from method.
      *
      * @param currentState the name of the condition
      * @return the state machine to allow for method chaining
@@ -74,7 +73,8 @@ public class StateMachine {
         return this;
     }
 
-    public void start() {
+    @Override
+    public void init() {
         if (currentState == null) {
             throw new IllegalStateException("No first state set");
         }
@@ -82,10 +82,8 @@ public class StateMachine {
         CommandScheduler.getInstance().schedule(states.get(currentState));
     }
 
-    /**
-     * Updates the state machine
-     */
-    public void update() {
+    @Override
+    public void periodic() {
         if (conditions.get(currentState) != null) {
             State stateExecutor = states.get(currentState);
             for (Transition transition : conditions.get(currentState)) {

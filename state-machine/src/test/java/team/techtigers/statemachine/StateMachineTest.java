@@ -43,7 +43,7 @@ class StateMachineTest {
     @Test
     @DisplayName("Starting without a first state set throws IllegalStateException")
     void startWithoutFirstStateSetThrowsException() {
-        assertThrows(IllegalStateException.class, () -> stateMachine.start());
+        assertThrows(IllegalStateException.class, () -> stateMachine.init());
     }
 
     @Test
@@ -51,7 +51,7 @@ class StateMachineTest {
     void startWithFirstStateSet() {
         stateMachine.addState(mockState);
         stateMachine.setFirstState(mockState.getName());
-        assertDoesNotThrow(() -> stateMachine.start());
+        assertDoesNotThrow(() -> stateMachine.init());
     }
 
     @Test
@@ -68,9 +68,9 @@ class StateMachineTest {
                 .addCondition(mockState.getName(), mockTransition);
         stateMachine.setFirstState(mockState.getName());
 
-        stateMachine.start();
+        stateMachine.init();
 
-        stateMachine.update();
+        stateMachine.periodic();
 
         verify(mockTransition, times(1)).isFinished(null);
         verify(mockState, times(1)).initialize();
@@ -82,8 +82,8 @@ class StateMachineTest {
     void updateWithoutConditionsDoesNothing() {
         stateMachine.addState(mockState)
                 .setFirstState(mockState.getName());
-        stateMachine.start();
+        stateMachine.init();
 
-        assertDoesNotThrow(() -> stateMachine.update());
+        assertDoesNotThrow(() -> stateMachine.periodic());
     }
 }
