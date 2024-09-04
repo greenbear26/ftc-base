@@ -1,20 +1,35 @@
-package team.techtigers.statemachine;
+package team.techtigers;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.Subsystem;
 
+import team.techtigers.statemachine.CloseableSubsytem;
+
 
 /**
- * A CommandOpMode that allows for custom telemetry.
+ * A CommandOpMode that allows for custom telemetry and more features
  */
 public abstract class BaseOpMode extends CommandOpMode {
-    protected GlobalState robotState;
     private CloseableSubsytem[] subsystems;
 
     /**
-     * Method where telemetry is set. All telemetry messages should be set here.
+     * Method run during the loop. Needed methods and telemetry should be placed here.
      */
-    protected void setTelemetry() {
+    protected void update() {
+    }
+
+    /**
+     * Method that is called just after the OpMode starts. It is recommended to
+     * use subsystems init() method if possible, but this is also an option.
+     */
+    protected void justAfterStart() {
+    }
+
+    /**
+     * Method that is called as the OpMode ends. It is recommended to
+     * use subsystems end() method if possible, but this is also an option.
+     */
+    protected void end() {
     }
 
     /**
@@ -35,20 +50,20 @@ public abstract class BaseOpMode extends CommandOpMode {
 
     @Override
     public void runOpMode() {
-        robotState = new GlobalState();
         subsystems = new CloseableSubsytem[0];
 
         try {
             initialize();
+            waitForStart();
             for (CloseableSubsytem subsystem : subsystems) {
                 subsystem.init();
             }
-            waitForStart();
+            justAfterStart();
 
             // run the scheduler
             while (!isStopRequested() && opModeIsActive()) {
                 run();
-                setTelemetry();
+                update();
                 telemetry.update();
             }
         } finally {
@@ -57,7 +72,7 @@ public abstract class BaseOpMode extends CommandOpMode {
             for (CloseableSubsytem subsystem : subsystems) {
                 subsystem.close();
             }
-//            AcrossOpModeSave.getInstance().setCurrentRobotPose(GlobalState.getRobotCurrentPose());
+            end();
         }
     }
 }

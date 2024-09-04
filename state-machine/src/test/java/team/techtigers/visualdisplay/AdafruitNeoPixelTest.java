@@ -10,7 +10,7 @@ import static org.mockito.Mockito.verify;
 
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
 
-import team.techtigers.core.leddisplay.Color;
+import team.techtigers.core.display.Color;
 
 class AdafruitNeoPixelTest {
 
