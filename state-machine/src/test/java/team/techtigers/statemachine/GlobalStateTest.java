@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import team.techtigers.core.utils.GlobalState;
+
 class GlobalStateTest {
 
     @Test

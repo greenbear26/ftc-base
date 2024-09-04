@@ -1,11 +1,14 @@
-package team.techtigers.statemachine;
+package team.techtigers;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.Subsystem;
 
+import team.techtigers.core.utils.GlobalState;
+import team.techtigers.statemachine.CloseableSubsytem;
+
 
 /**
- * A CommandOpMode that allows for custom telemetry.
+ * A CommandOpMode that allows for custom telemetry and more features
  */
 public abstract class BaseOpMode extends CommandOpMode {
     protected GlobalState robotState;
@@ -15,6 +18,20 @@ public abstract class BaseOpMode extends CommandOpMode {
      * Method where telemetry is set. All telemetry messages should be set here.
      */
     protected void setTelemetry() {
+    }
+
+    /**
+     * Method that is called just after the OpMode starts. It is recommended to
+     * use subsystems init() method, but this is also an option.
+     */
+    protected void justAfterStart() {
+    }
+
+    /**
+     * Method that is called as the OpMode ends. It is recommended to
+     * use subsystems end() method, but this is also an option.
+     */
+    protected void end() {
     }
 
     /**
@@ -40,10 +57,11 @@ public abstract class BaseOpMode extends CommandOpMode {
 
         try {
             initialize();
+            waitForStart();
             for (CloseableSubsytem subsystem : subsystems) {
                 subsystem.init();
             }
-            waitForStart();
+            justAfterStart();
 
             // run the scheduler
             while (!isStopRequested() && opModeIsActive()) {
@@ -57,7 +75,7 @@ public abstract class BaseOpMode extends CommandOpMode {
             for (CloseableSubsytem subsystem : subsystems) {
                 subsystem.close();
             }
-//            AcrossOpModeSave.getInstance().setCurrentRobotPose(GlobalState.getRobotCurrentPose());
+            end();
         }
     }
 }
