@@ -81,6 +81,9 @@ public class StateMachine {
         CommandScheduler.getInstance().schedule(states.get(currentState));
     }
 
+    /**
+     * Updates the state machine
+     */
     public void update() {
         if (conditions.get(currentState) != null) {
             State stateExecutor = states.get(currentState);
