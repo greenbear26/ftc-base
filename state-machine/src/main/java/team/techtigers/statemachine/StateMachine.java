@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * State machine that runs a series of states and transitions between them based on conditions
  */
-public class StateMachine extends CloseableSubsytem {
+public class StateMachine {
     private final HashMap<String, State> states;
     private final HashMap<String, ArrayList<Transition>> conditions;
     private String currentState;
@@ -73,8 +73,7 @@ public class StateMachine extends CloseableSubsytem {
         return this;
     }
 
-    @Override
-    public void init() {
+    public void start() {
         if (currentState == null) {
             throw new IllegalStateException("No first state set");
         }
@@ -82,8 +81,7 @@ public class StateMachine extends CloseableSubsytem {
         CommandScheduler.getInstance().schedule(states.get(currentState));
     }
 
-    @Override
-    public void periodic() {
+    public void update() {
         if (conditions.get(currentState) != null) {
             State stateExecutor = states.get(currentState);
             for (Transition transition : conditions.get(currentState)) {
