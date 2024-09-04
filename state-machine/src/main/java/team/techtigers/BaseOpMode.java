@@ -11,7 +11,6 @@ import team.techtigers.statemachine.CloseableSubsytem;
  * A CommandOpMode that allows for custom telemetry and more features
  */
 public abstract class BaseOpMode extends CommandOpMode {
-    protected GlobalState robotState;
     private CloseableSubsytem[] subsystems;
 
     /**
@@ -52,7 +51,6 @@ public abstract class BaseOpMode extends CommandOpMode {
 
     @Override
     public void runOpMode() {
-        robotState = new GlobalState();
         subsystems = new CloseableSubsytem[0];
 
         try {
