@@ -1,7 +1,7 @@
 package team.techtigers.actions;
 
 /**
- * Allows multiple servo actions to be performed at once
+ * Allows multiple actions to be performed at once
  */
 public class ParallelAction implements IAction {
     private final IAction[] actions;
@@ -33,7 +33,7 @@ public class ParallelAction implements IAction {
     }
 
     /**
-     * updates all of the values along with the position of the servo
+     * Updates all of the values along with the position of the servo
      */
     @Override
     public void update() {

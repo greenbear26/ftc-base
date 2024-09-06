@@ -1,7 +1,7 @@
 package team.techtigers.actions;
 
 /**
- * Allows multiple servo actions to be performed in series
+ * Allows multiple actions to be performed in series
  */
 public class SerialAction implements IAction {
     private final IAction[] actions;
@@ -36,7 +36,7 @@ public class SerialAction implements IAction {
     }
 
     /**
-     * updates all of the values along with the position of the servo
+     * Updates all of the values along with the position of the servo
      */
     @Override
     public void update() {

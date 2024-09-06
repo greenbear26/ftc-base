@@ -3,8 +3,6 @@ package team.techtigers.actions;
 /**
  * Interface for an action.
  * Will be able to create a step for a manipulator to use with either a servo or a motor
- *
- * <p> <b>Episode III</b>: The revenge of the Servo Actions </p>
  */
 public interface IAction {
     /**

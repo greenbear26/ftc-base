@@ -10,6 +10,10 @@ import com.arcrobotics.ftclib.command.CommandBase;
 public abstract class State<T> extends CommandBase {
     private final String name;
 
+    /**
+     * Initializes a new state
+     * @param name the name of the state
+     */
     public State(String name) {
         super();
         this.name = name;
@@ -20,6 +24,9 @@ public abstract class State<T> extends CommandBase {
      */
     public abstract T getCurrentCondition();
 
+    /**
+     * @return the name of the state
+     */
     public String getName() {
         return name;
     }

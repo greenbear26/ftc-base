@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
- * Allows a motor to run for a certain amount of time
+ * Allows a motor to run for a certain amount of time with the action interface
  */
 public class MotorAction implements IAction {
     private final DcMotor motor;
@@ -15,7 +15,7 @@ public class MotorAction implements IAction {
     /**
      * Initializes all values as well as throws exceptions for invalid inputs
      *
-     * @param motor    MotorEx to control
+     * @param motor    DcMotor to control
      * @param speed    speed and direction motor runs
      * @param duration time for the motor to run, in milliseconds
      */

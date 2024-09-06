@@ -4,7 +4,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
- * Allows a servo to reach a final position in a set amount of time
+ * Allows a servo to reach a final position in a set amount of this allows
+ * for the synchronization of servos to reach a final position at a specified
+ * time
  */
 public class ServoAction implements IAction {
     private final Servo servo;
@@ -19,7 +21,7 @@ public class ServoAction implements IAction {
     private final double INTERVAL = 30;
 
     /**
-     * Initializes all values as well as throws exeptions for invalid inputs
+     * Initializes all values and throws exceptions for invalid inputs
      *
      * @param servo            Servo object
      * @param expectedServoPos servo final position
