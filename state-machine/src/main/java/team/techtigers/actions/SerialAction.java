@@ -10,15 +10,16 @@ public class SerialAction implements IAction {
 
     /**
      * Initializes all of the values
+     *
      * @param actions array of actions
      */
     public SerialAction(IAction... actions) {
-        if (actions == null){
+        if (actions == null) {
             throw new IllegalArgumentException("Invalid actions (arg #1)");
         }
 
-        for (IAction action:actions) {
-            if (action == null){
+        for (IAction action : actions) {
+            if (action == null) {
                 throw new IllegalArgumentException("Invalid");
             }
         }
@@ -28,7 +29,7 @@ public class SerialAction implements IAction {
     }
 
     @Override
-    public void start(){
+    public void start() {
         actionIndex = 0;
         actions[actionIndex].start();
         isFinished = false;
@@ -38,7 +39,7 @@ public class SerialAction implements IAction {
      * updates all of the values along with the position of the servo
      */
     @Override
-    public void update(){
+    public void update() {
         if (actions[actionIndex].isFinished()) {
             actionIndex++;
             if (actionIndex >= actions.length) {
@@ -53,6 +54,7 @@ public class SerialAction implements IAction {
 
     /**
      * Returns if the servo has reached its final position
+     *
      * @return true if finished, false if not finished
      */
     @Override

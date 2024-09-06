@@ -20,7 +20,7 @@ public class VisualDisplaySubsystem extends CloseableSubsytem {
      * Initializes a new visual feedback subsystem object. Obtains references to visual feedback
      *
      * @param visualDisplay the visual display object (adafruit neopixel)
-     * @param defaultView the default view to display
+     * @param defaultView   the default view to display
      */
     public VisualDisplaySubsystem(AdafruitNeoPixel visualDisplay, DisplayView defaultView) {
         this.visualDisplay = visualDisplay;
@@ -50,6 +50,7 @@ public class VisualDisplaySubsystem extends CloseableSubsytem {
 
     /**
      * Finds the index of the LED in the array
+     *
      * @param ledX the x coordinate of the LED
      * @param ledY the y coordinate of the LED
      * @return the index of the LED in the array

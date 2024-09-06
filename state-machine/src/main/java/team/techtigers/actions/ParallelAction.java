@@ -8,16 +8,17 @@ public class ParallelAction implements IAction {
 
     /**
      * Initializes all of the values
+     *
      * @param actions array of actions
      */
     public ParallelAction(IAction... actions) {
-        if (actions == null){
+        if (actions == null) {
             throw new IllegalArgumentException("Invalid actions (arg #1)");
         }
 
         for (int i = 0; i < actions.length; i++) {
             IAction action = actions[i];
-            if (action == null){
+            if (action == null) {
                 throw new IllegalArgumentException("Invalid. Index: " + i);
             }
         }
@@ -25,8 +26,8 @@ public class ParallelAction implements IAction {
     }
 
     @Override
-    public void start(){
-        for (IAction action: actions) {
+    public void start() {
+        for (IAction action : actions) {
             action.start();
         }
     }
@@ -35,8 +36,8 @@ public class ParallelAction implements IAction {
      * updates all of the values along with the position of the servo
      */
     @Override
-    public void update(){
-        for (IAction action: actions) {
+    public void update() {
+        for (IAction action : actions) {
             if (!action.isFinished()) {
                 action.update();
             }
@@ -45,12 +46,13 @@ public class ParallelAction implements IAction {
 
     /**
      * Returns if the servo has reached its final position
+     *
      * @return true if finished, false if not finished
      */
     @Override
     public boolean isFinished() {
         boolean result = true;
-        for (IAction action: actions) {
+        for (IAction action : actions) {
             result = result && action.isFinished();
         }
 

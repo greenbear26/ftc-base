@@ -14,6 +14,7 @@ public interface IAction {
 
     /**
      * Returns whether the motor or servo is done with the action
+     *
      * @return if the servo has finished going to its position
      */
     boolean isFinished();

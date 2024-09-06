@@ -20,9 +20,10 @@ public class ServoAction implements IAction {
 
     /**
      * Initializes all values as well as throws exeptions for invalid inputs
-     * @param servo Servo object
+     *
+     * @param servo            Servo object
      * @param expectedServoPos servo final position
-     * @param duration time for the servo to move over
+     * @param duration         time for the servo to move over
      */
     public ServoAction(Servo servo, double expectedServoPos, long duration) {
         if (servo == null) {
@@ -45,7 +46,7 @@ public class ServoAction implements IAction {
     }
 
     @Override
-    public void start(){
+    public void start() {
         time.reset();
         initialServoPos = servo.getPosition();
         double actualDistance = expectedServoPos - initialServoPos;
@@ -55,10 +56,10 @@ public class ServoAction implements IAction {
 
     @Override
     public void update() {
-        currentLink = (int) (time.milliseconds()/INTERVAL);
+        currentLink = (int) (time.milliseconds() / INTERVAL);
 
         isFinished = time.milliseconds() >= duration;
-        double targetPos = isFinished? expectedServoPos: initialServoPos + (currentLink * linkSize);
+        double targetPos = isFinished ? expectedServoPos : initialServoPos + (currentLink * linkSize);
         servo.setPosition(targetPos);
     }
 
