@@ -13,13 +13,13 @@ public class ParallelAction implements IAction {
      */
     public ParallelAction(IAction... actions) {
         if (actions == null) {
-            throw new IllegalArgumentException("Invalid actions (arg #1)");
+            throw new IllegalArgumentException("No non-null actions inputted");
         }
 
         for (int i = 0; i < actions.length; i++) {
             IAction action = actions[i];
             if (action == null) {
-                throw new IllegalArgumentException("Invalid. Index: " + i);
+                throw new IllegalArgumentException("Action is null. Index: " + i);
             }
         }
         this.actions = actions;

@@ -21,13 +21,14 @@ public class MotorAction implements IAction {
      */
     public MotorAction(DcMotor motor, double speed, long duration) {
         if (motor == null) {
-            throw new IllegalArgumentException("Invalid motor (arg #1)");
+            throw new IllegalArgumentException("Null motor (arg #1)");
         }
         if (duration < 0) {
-            throw new IllegalArgumentException("Invalid duration (arg #3)");
+            throw new IllegalArgumentException("Duration < 0 (arg #3)");
         }
         if (speed > 1 || speed < -1) {
-            throw new IllegalArgumentException("Invalid speed (arg #2)");
+            throw new IllegalArgumentException("Speed not between 0 and 1 " +
+                    "(arg #2)");
         }
 
         this.motor = motor;

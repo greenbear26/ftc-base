@@ -15,12 +15,12 @@ public class SerialAction implements IAction {
      */
     public SerialAction(IAction... actions) {
         if (actions == null) {
-            throw new IllegalArgumentException("Invalid actions (arg #1)");
+            throw new IllegalArgumentException("No non-null actions inputted");
         }
 
         for (IAction action : actions) {
             if (action == null) {
-                throw new IllegalArgumentException("Invalid");
+                throw new IllegalArgumentException("Action is null");
             }
         }
         this.actions = actions;
